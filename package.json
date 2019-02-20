@@ -1,0 +1,23 @@
+{
+  "name": "@xyluet/objection-table-name",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "jest": "^24.1.0",
+    "objection": "^1.6.2"
+  },
+  "dependencies": {
+    "lodash.snakecase": "^4.1.1"
+  }
+}
