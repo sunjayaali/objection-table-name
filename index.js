@@ -1,13 +1,17 @@
 const snakeCase = require(`lodash.snakecase`);
 
-module.exports = ({
-  caseMapper = snakeCase
-} = {}) => {
-  return (Model) => {
-    return class extends Model {
-      static get tableName() {
-        return caseMapper(this.name);
-      }
-    };
+/**
+ * @param {Object} options:
+ * @param {Function} options.caseMapper
+ */
+function tableNamer({
+  caseMapper = snakeCase,
+} = {}) {
+  return Model => class extends Model {
+    static get tableName() {
+      return caseMapper(this.name);
+    }
   };
 }
+
+module.exports = tableNamer;

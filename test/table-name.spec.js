@@ -1,33 +1,53 @@
-const tableName = require(`../`);
+const tableNamer = require(`../`);
 const { Model } = require(`objection`);
 
+function getTableNameFromClass(cls) {
+  return cls.tableName;
+}
+
+function upperFirst([c, ...rest]) {
+  return [c.toUpperCase(), ...rest].join(``);
+}
+
+function overrideClassName(cls, name) {
+  Object.defineProperty(cls, `name`, { value: name });
+}
+
 describe(`table name from class name`, () => {
-  describe(`when defaults`, () => {
-    let tableNamer;
-
-    beforeAll(() => {
-      tableNamer = tableName();
-    });
-
-    it(`should resolve 'tableName' with snake_cased`, () => {
-      class Foo extends tableNamer(Model) { }
-      class FooBar extends tableNamer(Model) { }
-      class fooBar extends tableNamer(Model) { }
-      class _fooBar extends tableNamer(Model) { }
-      class _fooBar_ extends tableNamer(Model) { }
-      expect(Foo.tableName).toStrictEqual(`foo`);
-      expect(FooBar.tableName).toStrictEqual(`foo_bar`);
-      expect(fooBar.tableName).toStrictEqual(`foo_bar`);
-      expect(_fooBar.tableName).toStrictEqual(`foo_bar`);
-      expect(_fooBar_.tableName).toStrictEqual(`foo_bar`);
+  describe(`when using defaults`, () => {
+    it(`should resolve 'tablename' with snake_cased`, () => {
+      class BaseModel extends tableNamer()(Model) { }
+      const testClass = {
+        Foo: `foo`,
+        FooBar: `foo_bar`,
+        fooBar: `foo_bar`,
+        _fooBar: `foo_bar`,
+        _fooBar_: `foo_bar`,
+      };
+      class TestModel extends BaseModel { }
+      Object.entries(testClass).forEach(([className, tableName]) => {
+        overrideClassName(TestModel, className);
+        expect(getTableNameFromClass(TestModel)).toStrictEqual(tableName);
+      });
     });
   });
 
-  describe(`when customs`, () => {
-    let tableNamer;
-
-    beforeAll(() => {
-      tableNamer = tableName();
+  describe(`when using customs`, () => {
+    it(`should resolve 'tableName'`, () => {
+      const mock = jest.fn(className => upperFirst(className));
+      class BaseModel extends tableNamer({
+        caseMapper: mock,
+      })(Model) { }
+      const testClass = {
+        foo_bar: `Foo_bar`,
+        fooBar: `FooBar`,
+      };
+      class TestModel extends BaseModel { }
+      Object.entries(testClass).forEach(([className, tableName]) => {
+        overrideClassName(TestModel, className);
+        expect(getTableNameFromClass(TestModel)).toStrictEqual(tableName);
+        expect(mock).toHaveBeenCalledWith(className);
+      });
     });
   });
 });

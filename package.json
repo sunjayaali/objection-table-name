@@ -1,14 +1,30 @@
 {
   "name": "@xyluet/objection-table-name",
-  "description": "",
+  "description": "Plugin that automatically set tableName using class name to objection.js",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore ."
   },
-  "keywords": [],
-  "author": "",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "objection",
+    "objectionjs",
+    "class",
+    "tablename",
+    "plugin"
+  ],
+  "author": {
+    "name": "Ali Sunjaya",
+    "email": "ali.sunjayaa@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xyluet/objection-table-name.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.14.1",
