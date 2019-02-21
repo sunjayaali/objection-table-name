@@ -47,9 +47,9 @@ function upperFirst([s, ...rest]) {
   return [s.toUpperCase(), ...rest].join(``);
 }
 
-class BaseModel extends TableNamer()(Model) {
+class BaseModel extends TableNamer({
   caseMapper: upperFirst,
-}
+})(Model) { }
 
 class foo_Bar extends BaseModel { }
 console.log(TransactionDetail.tableName);
