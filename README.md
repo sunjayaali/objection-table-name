@@ -26,7 +26,7 @@ console.log(FooBar.tableName);
 
 ```js
 const { Model } = require(`objection`);
-const { TableNamer } = require(`@xyluet/objection-table-name`);
+const TableNamer = require(`@xyluet/objection-table-name`);
 
 // The common way is:
 // - make this is as your base class
