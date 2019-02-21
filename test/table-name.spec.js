@@ -1,4 +1,4 @@
-const tableNamer = require(`../`);
+const TableNamer = require(`../`);
 const { Model } = require(`objection`);
 
 function getTableNameFromClass(cls) {
@@ -16,7 +16,7 @@ function overrideClassName(cls, name) {
 describe(`table name from class name`, () => {
   describe(`when using defaults`, () => {
     it(`should resolve 'tablename' with snake_cased`, () => {
-      class BaseModel extends tableNamer()(Model) { }
+      class BaseModel extends TableNamer()(Model) { }
       const testClass = {
         Foo: `foo`,
         FooBar: `foo_bar`,
@@ -35,7 +35,7 @@ describe(`table name from class name`, () => {
   describe(`when using customs`, () => {
     it(`should resolve 'tableName'`, () => {
       const mock = jest.fn(className => upperFirst(className));
-      class BaseModel extends tableNamer({
+      class BaseModel extends TableNamer({
         caseMapper: mock,
       })(Model) { }
       const testClass = {
