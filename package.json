@@ -21,19 +21,15 @@
     "name": "Ali Sunjaya",
     "email": "ali.sunjayaa@gmail.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xyluet/objection-table-name.git"
-  },
+  "repository": "xyluet/objection-table-name",
   "license": "MIT",
+  "peerDependencies": {
+    "objection": "^1.6.3"
+  },
   "devDependencies": {
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "jest": "^24.1.0",
-    "objection": "^1.6.2"
-  },
-  "dependencies": {
-    "lodash.snakecase": "^4.1.1"
+    "jest": "^24.1.0"
   }
 }
