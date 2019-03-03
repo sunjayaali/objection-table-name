@@ -23,8 +23,10 @@
   },
   "repository": "xyluet/objection-table-name",
   "license": "MIT",
-  "peerDependencies": {
-    "objection": "^1.6.3"
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "objection": "^1.6.3",
+    "pluralize": "^7.0.0"
   },
   "devDependencies": {
     "eslint": "^5.14.1",

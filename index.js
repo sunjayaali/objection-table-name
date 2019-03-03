@@ -1,4 +1,6 @@
-const snakeCase = require(`lodash.snakecase`);
+const memoize = require('lodash/memoize');
+const { plural } = require('pluralize');
+const { snakeCase } = require('objection/lib/utils/identifierMapping');
 
 /**
  * @param {Object} options:
@@ -7,9 +9,11 @@ const snakeCase = require(`lodash.snakecase`);
 function tableNamer({
   caseMapper = snakeCase,
 } = {}) {
+  const mapper = memoize(str => plural(caseMapper(str)));
+
   return Model => class extends Model {
     static get tableName() {
-      return caseMapper(this.name);
+      return mapper(this.name);
     }
   };
 }
