@@ -8,8 +8,5 @@
   "extends": "airbnb-base",
   "parserOptions": {
     "ecmaVersion": 2018
-  },
-  "rules": {
-    "quotes": [1, "backtick"]
   }
 }
