@@ -1,7 +1,7 @@
 {
   "name": "@xyluet/objection-table-name",
   "description": "Plugin that automatically set tableName using class name to objection.js",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
     "test": "jest",
