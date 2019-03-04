@@ -15,7 +15,7 @@ what about:
 ```js
 class FooBar extends Model { }
 console.log(FooBar.tableName);
-// => foo_bar
+// => foo_bars
 ```
 
 ## Installation
@@ -37,7 +37,7 @@ class BaseModel extends TableNamer()(Model) { }
 // TransactionDetail.js
 class TransactionDetail extends BaseModel { }
 console.log(TransactionDetail.tableName);
-// => transaction_detail
+// => transaction_details
 ```
 
 You can define your own mapper
@@ -52,7 +52,7 @@ class BaseModel extends TableNamer({
 })(Model) { }
 
 class foo_Bar extends BaseModel { }
-console.log(TransactionDetail.tableName);
+console.log(foo_Bar.tableName);
 // => Foo_Bar
 ```
 
